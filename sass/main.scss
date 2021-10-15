@@ -1,0 +1,61 @@
+.accent-fg { color: #8E6BFF; }
+.accent-bg { background-color: #8E6BFF; }
+
+pre {
+    display: inline;
+    color: #8E6BFF;
+    background-color: #8E6BFF22;
+}
+
+.light-fg {
+    color: #fff;
+}
+
+.navbar {
+    padding-top: 10px;
+}
+
+.navbar-nav {
+    margin: 0 auto;
+
+    .nav-item {
+        margin: 0 10px;
+    }
+}
+
+button.navbar-toggler {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.jumbotron {
+    padding-top: 20px;
+
+    div {
+        min-height: 200px;
+        position: relative;
+
+        h1 {
+            display: inline-block;
+            margin: 20px 0px;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        h4 {
+            font-family: monospace;
+            font-weight: bold;
+            background-color: #ffffff44;
+            padding: 5px 10px;
+            display: inline-block;
+        }
+    
+        img {
+            height: 100px;
+            border-radius: 100px;
+            position: absolute;
+            bottom: -50px;
+            right: 10%;
+        }
+    }
+}

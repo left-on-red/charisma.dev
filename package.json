@@ -1,0 +1,29 @@
+{
+  "name": "charisma.dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "_compile_sass": "sass sass:src/css",
+    "dev": "concurrently \"node .\" \"sass --watch sass:src/css\"",
+    "build": "node build.js",
+    "deploy": "node gh-pages-deploy.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shadeRed/charisma.dev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shadeRed/charisma.dev/issues"
+  },
+  "homepage": "https://github.com/shadeRed/charisma.dev#readme",
+  "dependencies": {
+    "concurrently": "^6.3.0",
+    "execa": "^5.1.1",
+    "express": "^4.17.1",
+    "sass": "^1.43.2"
+  }
+}
