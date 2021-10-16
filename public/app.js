@@ -6,5 +6,14 @@ let router = new VueRouter({
 
 let app = new Vue({
     router,
-    el: '#app'
+    el: '#app',
+    vuetify: new Vuetify({
+        theme: {
+            themes: {
+                light: {
+                    primary: '#8E6BFF'
+                }
+            }
+        }
+    })
 })
