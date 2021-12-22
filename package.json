@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "_compile_sass": "sass sass:src/css",
+    "_compile_sass": "sass sass:public/css",
     "dev": "concurrently \"node .\" \"sass --watch sass:public/css\"",
     "build": "node build.js",
     "deploy": "node gh-pages-deploy.js"

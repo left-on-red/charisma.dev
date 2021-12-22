@@ -7,15 +7,35 @@ if (fs.existsSync('./build')) { fs.rmSync('./build', { recursive: true }) }
 //fs.mkdirSync('./build');
 
 fs.cpSync('./public', './build', { recursive: true });
-fs.rmSync('./build/css', { recursive: true });
+//fs.rmSync('./build/css', { recursive: true });
 
-(() => {
+let recur = (path, callback, filter) => {
+    let files = fs.readdirSync(path);
+    for (let f = 0; f < files.length; f++) {
+        if (fs.statSync(`${path}/${files[f]}`).isDirectory()) { recur(`${path}/${files[f]}`, callback, filter) }
+        else {
+            if (filter && filter(`${path}/${files[f]}`) == false) { continue; }
+            callback(`${path}/${files[f]}`);
+        }
+    }
+}
+
+let build_tags = (path, builder, join, filter) => {
+    let list = [];
+    recur(path, (p) => { list.push(builder(p)) }, filter);
+    if (join) { return list.join('\n') }
+    else { return list }
+}
+
+let styles = build_tags('./public/css', (path) => `<link rel="stylesheet" href="${path.slice(9)}">`, true, (p) => !p.endsWith('.map'));
+
+/*(() => {
     let css = [];
 
     let dir = fs.readdirSync('./public/css');
     for (let d = 0; d < dir.length; d++) { if (dir[d].endsWith('.css')) { css.push(fs.readFileSync(`./public/css/${dir[d]}`).toString()) } }
     fs.writeFileSync('./build/styles.css', css.join('\n'));
-})();
+})();*/
 
 (() => {
     let components = [];
@@ -34,7 +54,7 @@ fs.rmSync('./build/css', { recursive: true });
 })();
 
 let html = fs.readFileSync('./build/index.html').toString()
-    .replace('[[styles]]', '<link rel="stylesheet" href="styles.css">')
+    .replace('[[styles]]', styles)
     .replace('[[scripts]]', '<script src="views.js"></script>\n<script src="components.js"></script>');
 
 fs.writeFileSync('./build/index.html', html);
