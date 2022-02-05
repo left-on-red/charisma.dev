@@ -15,7 +15,6 @@ let fs = require('fs');
         await execa('git', ['push', 'origin', 'HEAD:gh-pages', '--force']);
         //await execa('rm', ['-r', name]);
         await execa('git', ['checkout', '-f', 'master']);
-        await execa('git', ['branch', '-D', 'gh-pages']);
         console.log('successfully deployed, check your settings');
     }
   
