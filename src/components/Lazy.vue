@@ -20,7 +20,9 @@ export default {
 
     mounted() {
         let options = {
-            threshold: 1.0
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
         }
 
         let target = this.$refs.lazy_element;
